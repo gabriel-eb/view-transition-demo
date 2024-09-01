@@ -5,12 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="view-transition" content="same-origin">
-  <title>Monkey Chef</title>
+  <title>Monkey Chef 👩‍🍳</title>
   <link href="/style.css" rel="stylesheet">
-  <script type="text/javascript" src="../main.js"></script>
+  <link rel="expect" href="#detail">
+  <script async type="text/javascript" src="../main.js"></script>
+  <script type="speculationrules">
+  {
+    "prefetch": [
+      {
+        "urls": ["../index.html"],
+        "eagerness": "immediate"
+      }
+    ]
+  }
+</script>
 </head>
 
-<body id="detail" cz-shortcut-listen="true">
+<body id="detail">
   <main>
     <h1>Monkey Chef</h1>
     <img src="/images/chef.webp" alt="Animation of monkey chef">

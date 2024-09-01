@@ -1,14 +1,10 @@
 // Path where this app is deployed. Because we don’t deploy at the root of the domain
 // we need to keep track of this and adjust any URL matching using this value.
 const homePagePattern = new URLPattern(`/index.html`, window.origin);
-const isHomePage = (url) => {
-    return homePagePattern.exec(url);
-}
+const isHomePage = (url) => homePagePattern.exec(url);
 
 const profilePagePattern = new URLPattern(`/profiles/:profile`, window.origin);
-const isProfilePage = (url) => {
-    return profilePagePattern.exec(url);
-}
+const isProfilePage = (url) => profilePagePattern.exec(url);
 
 const extractProfileNameFromUrl = (url) => {
     const match = profilePagePattern.exec(url);
@@ -49,8 +45,6 @@ window.addEventListener('pageswap', async (e) => {
         if (isProfilePage(targetUrl)) {
             const profile = extractProfileNameFromUrl(targetUrl).replace(/\.[^/.]+$/, "");
 
-            const swap = document.querySelector(`#${profile} span`);
-
             setTemporaryViewTransitionNames([
                 [document.querySelector(`#${profile} span`), 'animate-name'],
                 [document.querySelector(`#${profile} img`), 'animate-avatar'],
@@ -68,15 +62,11 @@ window.addEventListener('pagereveal', async (e) => {
     if (e.viewTransition) {
         const fromUrl = new URL(navigation.activation.from.url);
         const currentUrl = new URL(navigation.activation.entry.url);
-        console.log(fromUrl);
-        console.log(currentUrl);
 
         // Went from profile page to homepage
         // ~> Set VT names on the relevant list item
         if (isProfilePage(fromUrl) && isHomePage(currentUrl)) {
             const profile = extractProfileNameFromUrl(fromUrl).replace(/\.[^/.]+$/, "");
-
-            const reveal = document.querySelector(`#${profile} span`);
 
             setTemporaryViewTransitionNames([
                 [document.querySelector(`#${profile} span`), 'animate-name'],

@@ -1,11 +1,10 @@
 @layer reset, layout, pages, components;
 
-@layer view-transitions {
-    @view-transition {
-        navigation: auto;
-    }
+@view-transition {
+    navigation: auto;
+}
 
-    /* #detail main {
+/* #detail main {
 		img {
 			view-transition-name: profile-avatar;
 		}
@@ -14,143 +13,97 @@
 		}
 	} */
 
-    ::view-transition-old(animate-name) {
-        animation: graphicMain 0.2s linear forwards;
+
+#detail {
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    ::view-transition-new(animate-avatar) {
-        animation: graphicMain 0.3s linear reverse;
-    }
-
-    ::view-transition-old(animate-name) {
-        animation: graphicMain 0.2s linear forwards;
-    }
-
-    ::view-transition-new(animate-avatar) {
-        animation: graphicMain 0.3s linear reverse;
-    }
-
-    @keyframes graphicMain {
-
-        0% {
-            opacity: 0;
-            translate: 0 100px;
-        }
-
-        100% {
-            opacity: 1;
-            translate: 0;
-        }
-    }
-
-}
-
-@layer pages {
-
-    @layer detail {
-        #detail {
-            main {
-                display: grid;
-                grid-template: "name name" auto
-                    "avatar bio" auto / auto 1fr;
-                gap: 1em;
-
-                >* {
-                    margin-top: 0;
-                    margin-bottom: 0;
-                }
-            }
-
-            h1 {
-                grid-area: name;
-
-                display: inline;
-                width: fit-content;
-            }
-
-            main img {
-                grid-area: avatar;
-
-                display: block;
-                width: 10em;
-                aspect-ratio: 1;
-                border-radius: 50%;
-            }
-
-            main p {
-                grid-area: bio;
-            }
-        }
+    main img {
+        display: block;
+        width: 14em;
+        aspect-ratio: 1;
+        border-radius: 50%;
     }
 }
 
-@layer components {
-    @layer profiles {
-        .profiles {
-            list-style: none;
+.profiles {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1em;
 
-            li {
-                margin: 0.25em 0;
-            }
 
-            a {
-                text-decoration: none;
-
-                display: flex;
-                flex-direction: row;
-                gap: 0.5em;
-                padding: 0.5em;
-                align-items: center;
-
-                color: black;
-                text-decoration: none;
-
-                &:hover {
-                    background: #f4f4f4;
-                }
-            }
-
-            img {
-                height: 4em;
-                width: 4em;
-                border-radius: 50%;
-                display: inline-block;
-            }
+    li {
+        spam {
+            text-align: center;
         }
+    }
+
+    a {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        padding: 0.5em;
+        align-items: center;
+        color: black;
+
+        &:hover {
+            background: #f4f4f4;
+            border-radius: 1rem;
+        }
+    }
+
+    img {
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        display: inline-block;
     }
 }
 
-@layer layout {
-    html {
-        background-color: white;
-        height: 100%;
-        width: 100%;
+.dev {
+    font-family: monospace;
+    font-size: 1rem;
+}
 
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
+html {
+    background-color: #f3f0f0;
+    height: 100%;
+    width: 100%;
 
-    body {
-        height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main,
+aside {
+    max-width: 60em;
+    margin: 0 auto 4em;
+    padding: 1em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+iframe {
+    margin: 1rem 0;
+    @media (max-width: 600px) {
         width: 100%;
     }
+}	
 
-    main,
-    aside {
-        max-width: 60em;
-        margin: 0 auto 4em;
-        padding: 1em;
-    }
-}
-
-@layer reset {
-    * {
-        box-sizing: border-box;
-    }
-
-    html,
-    body,
-    ul[class] {
-        margin: 0;
-        padding: 0;
-    }
+html,
+body,
+ul[class] {
+    margin: 0;
+    padding: 0;
 }
