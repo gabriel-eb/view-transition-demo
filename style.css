@@ -1,72 +1,156 @@
-html {
-    font-family: Arial, Helvetica, sans-serif;
-    height: 100%;
-}
+@layer reset, layout, pages, components;
 
-body {
-    margin: 0;
-    height: inherit;
-}
-
-img {
-    width: 99vw;
-    height: 99vh;
-    object-fit: cover;
-}
-
-p {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 2rem;
-    padding: 20px;
-    margin: 0;
-    border-radius: 5px;
-    background-color: rgba(255 255 255 / 0.8);
-}
-
-/* Turn cross-document view-transitions on */
-/* Note that this at-rule is all that is needed to create the default cross-fade animation  */
-
-@view-transition {
-    navigation: auto;
-}
-
-/* Customize the default animation behavior */
-
-::view-transition-group(root) {
-    animation-duration: 0.5s;
-}
-
-/* Create a custom animation */
-
-@keyframes move-out {
-    from {
-        transform: translateX(0%);
+@layer view-transitions {
+    @view-transition {
+        navigation: auto;
     }
 
-    to {
-        transform: translateX(-100%);
+    /* #detail main {
+		img {
+			view-transition-name: profile-avatar;
+		}
+		h1 {
+			view-transition-name: profile-name;
+		}
+	} */
+
+    ::view-transition-old(animate-name) {
+        animation: graphicMain 0.2s linear forwards;
+    }
+
+    ::view-transition-new(animate-avatar) {
+        animation: graphicMain 0.3s linear reverse;
+    }
+
+    ::view-transition-old(animate-name) {
+        animation: graphicMain 0.2s linear forwards;
+    }
+
+    ::view-transition-new(animate-avatar) {
+        animation: graphicMain 0.3s linear reverse;
+    }
+
+    @keyframes graphicMain {
+
+        0% {
+            opacity: 0;
+            translate: 0 100px;
+        }
+
+        100% {
+            opacity: 1;
+            translate: 0;
+        }
+    }
+
+}
+
+@layer pages {
+
+    @layer detail {
+        #detail {
+            main {
+                display: grid;
+                grid-template: "name name" auto
+                    "avatar bio" auto / auto 1fr;
+                gap: 1em;
+
+                >* {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+
+            h1 {
+                grid-area: name;
+
+                display: inline;
+                width: fit-content;
+            }
+
+            main img {
+                grid-area: avatar;
+
+                display: block;
+                width: 10em;
+                aspect-ratio: 1;
+                border-radius: 50%;
+            }
+
+            main p {
+                grid-area: bio;
+            }
+        }
     }
 }
 
-@keyframes move-in {
-    from {
-        transform: translateX(100%);
-    }
+@layer components {
+    @layer profiles {
+        .profiles {
+            list-style: none;
 
-    to {
-        transform: translateX(0%);
+            li {
+                margin: 0.25em 0;
+            }
+
+            a {
+                text-decoration: none;
+
+                display: flex;
+                flex-direction: row;
+                gap: 0.5em;
+                padding: 0.5em;
+                align-items: center;
+
+                color: black;
+                text-decoration: none;
+
+                &:hover {
+                    background: #f4f4f4;
+                }
+            }
+
+            img {
+                height: 4em;
+                width: 4em;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        }
     }
 }
 
-/* Apply the custom animation to the old and new page states */
+@layer layout {
+    html {
+        background-color: white;
+        height: 100%;
+        width: 100%;
 
-::view-transition-old(root) {
-    animation: 0.4s ease-in both move-out;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 
+    body {
+        height: 100%;
+        width: 100%;
+    }
+
+    main,
+    aside {
+        max-width: 60em;
+        margin: 0 auto 4em;
+        padding: 1em;
+    }
 }
 
-::view-transition-new(root) {
-    animation: 0.4s ease-in both move-in;
+@layer reset {
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body,
+    ul[class] {
+        margin: 0;
+        padding: 0;
+    }
 }
