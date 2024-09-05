@@ -50,17 +50,27 @@ The default animation is fade-in (opacity from 0 to 1). Other properties that ca
 - Navigation API
 - Render blocking
 
-Specifically, render blocking can block the rendering of the new page, so the animation can be completed. Sometimes if an asset is missing, the animation skips. But render blocking impacts loading time (FCP [6](#references)).
+Specifically, render blocking can block the rendering of the new page, so the animation can be completed. Sometimes if an asset is missing, the animation skips. But render blocking impacts loading time (FCP [6](#references)). As stated before, any fail during the transition shouldn't throw an error; it should be handled and the transition is going to skip.
 
-The `pageswap` event fires before the last frame of a page is rendered. You can use this to do some last-minute changes on the outgoing page, right before the old snapshots get taken.
+The `pageswap` event fires before the last frame of a page is rendered. You can use this to do some last-minute changes on the outgoing page, right before the old snapshots get taken. The `pagereveal` event fires on a page after it has been initialized or reactivated but before the first rendering opportunity. With it, you can customize the new page before the new snapshots get taken. Also, you can modify the default animations in any way you want using regular CSS — target the "from" animation with `::view-transition-old`, and the "to" animation with `::view-transition-new` [2](#references).
 
-The `pagereveal` event fires on a page after it has been initialized or reactivated but before the first rendering opportunity. With it, you can customize the new page before the new snapshots get taken.
+``` css
+  @keyframe customized{
+    from: {
+      width: 0;
+    }
+    to: {
+      width: 100%;
+    }
+  }
 
-As stated before, any fail during the transition shouldn't throw an error; it should be handled and the transition is going to skip.
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: customized 0.5s;
+  }
+```
 
-You can modify the default animations in any way you want using regular CSS — target the "from" animation with ::view-transition-old, and the "to" animation with ::view-transition-new [2](#references).
-
-One last resource to optimize the transitions is to add Speculation Rules [7](#references), but it is an experimental feature, so the View Transition API is limited to certain browsers.
+One last resource to optimize the transitions is to add Speculation Rules [7](#references), but it is an experimental feature like View Transitions API, so it is limited to certain browsers.
 
 ## 🔮 Use Cases
 In brief, the best use case is to add animation between transitions for certain web pages, and apps can be a plus. Being more specific:
