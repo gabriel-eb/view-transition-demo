@@ -1,8 +1,17 @@
+*{  
+  box-sizing: border-box;
+}
+
 html {
   font-family: Helvetica, Arial, sans-serif;
   height: 100%;
   background: rgb(1, 55, 96);
-  background: linear-gradient(110deg, rgba(1, 55, 96, 1) 0%, rgba(128, 55, 155, 1) 48%, rgba(222, 27, 131, 1) 74%, rgba(246, 77, 5, 1) 100%);
+  background: linear-gradient(
+    110deg, rgb(1, 55, 96) 0%, 
+    rgb(128, 55, 155) 48%, 
+    rgb(222, 27, 131) 74%, 
+    rgb(246, 77, 5) 100%
+  );
 }
 
 body {
@@ -10,21 +19,33 @@ body {
   height: inherit;
 }
 
+main{
+  height: inherit;
+}
+
+
 img {
-  width: 20vw;
-  height: 20vh;
   object-fit: cover;
 }
 
-p {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 2rem;
-  padding: 20px;
-  margin: 0;
-  border-radius: 5px;
-  background-color: rgba(255 255 255 / 0.8);
+@media screen and (min-width: 1025px) {
+  h1 { font-size: 4rem; }
+  h2 { font-size: 3em; }
+  h3 { font-size: 2em; }
+  p { font-size: 1.5em; }
+}
+
+body.bg-white {
+  height: 90%;
+  width: 90%;
+  background: white;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
 }
 
 /* Turn cross-document view-transitions on */

@@ -1,0 +1,47 @@
+.welcome {
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  padding: 4em;
+
+  img {
+    width: 50%;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  h3 {
+    color: white;
+  }
+
+  p {
+    color: lightslategray;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    p {
+      line-height: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .welcome {
+    flex-direction: column;
+    padding: 2em;
+    img {
+      flex-grow: 1;
+      width: auto;
+      height: 50%;
+    }
+    section {
+      display: block;
+    }
+  }
+}
