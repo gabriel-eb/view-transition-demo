@@ -1,0 +1,69 @@
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  height: 100%;
+  background: rgb(1, 55, 96);
+  background: linear-gradient(110deg, rgba(1, 55, 96, 1) 0%, rgba(128, 55, 155, 1) 48%, rgba(222, 27, 131, 1) 74%, rgba(246, 77, 5, 1) 100%);
+}
+
+body {
+  margin: 0;
+  height: inherit;
+}
+
+img {
+  width: 20vw;
+  height: 20vh;
+  object-fit: cover;
+}
+
+p {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  padding: 20px;
+  margin: 0;
+  border-radius: 5px;
+  background-color: rgba(255 255 255 / 0.8);
+}
+
+/* Turn cross-document view-transitions on */
+/* Note that this at-rule is all that is needed to create the default cross-fade animation  */
+@view-transition {
+  navigation: auto;
+}
+
+/* Customize the default animation behavior */
+::view-transition-group(root) {
+  animation-duration: 0.5s;
+}
+
+/* Create a custom animation */
+@keyframes move-out {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes move-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+/* Apply the custom animation to the old and new page states */
+::view-transition-old(root) {
+  animation: 0.4s ease-in both move-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.4s ease-in both move-in;
+}
