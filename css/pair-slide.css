@@ -1,8 +1,16 @@
 main {
   max-width: 50%;
 
+  h2 {
+    margin-bottom: 2em;
+  }
+
   @media screen and (max-width: 1025px) {
     max-width: 100%;
+
+    h2 {
+      margin-bottom: 0;
+    }
   }
 }
 

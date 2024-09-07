@@ -45,7 +45,11 @@ li::marker {
 @media screen and (min-width: 1025px) {
   h1 { font-size: 4rem; }
   h2 { font-size: 3em; }
-  h3 { font-size: 2em; }
+  h3 { 
+    font-size: 2em; 
+    color:var(--main-color);
+    line-height: 0.2em;
+  }
   p {
     font-size: 1.5em;
     line-height: 1.5em;
