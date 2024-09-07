@@ -67,6 +67,11 @@ body.bg-white {
   -webkit-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
+  @media (orientation: portrait) and (max-width: 1025px){
+    height: inherit;
+    width: inherit;
+    background: white;
+  }
 }
 
 body.content {
@@ -122,7 +127,7 @@ body.content.inverted {
 
 /* Customize the default animation behavior */
 ::view-transition-group(root) {
-  animation-duration: 0.5s;
+  animation-duration: 1s;
 }
 
 /* Create a custom animation */
@@ -148,9 +153,9 @@ body.content.inverted {
 
 /* Apply the custom animation to the old and new page states */
 ::view-transition-old(root) {
-  animation: 0.4s ease-in both move-out;
+  animation: 1s ease-in-out both move-out;
 }
 
 ::view-transition-new(root) {
-  animation: 0.4s ease-in both move-in;
+  animation: 1s ease-in-out both move-in;
 }
