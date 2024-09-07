@@ -1,0 +1,29 @@
+main {
+  max-width: 50%;
+
+  @media screen and (max-width: 1025px) {
+    max-width: 100%;
+  }
+}
+
+aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+aside {
+  img {
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    @media screen and (max-width: 1025px) {
+      max-width: 40vw;
+    }
+
+    @media screen and (max-width: 700px) {
+      max-width: 60vw;
+    }
+  }
+}

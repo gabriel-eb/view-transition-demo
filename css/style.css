@@ -1,17 +1,21 @@
-*{  
+* {
   box-sizing: border-box;
+}
+
+:root {
+  --main-color: #003760;
+  --second-color: #803795;
+  --third-color: #f64d05;
 }
 
 html {
   font-family: Helvetica, Arial, sans-serif;
   height: 100%;
   background: rgb(1, 55, 96);
-  background: linear-gradient(
-    110deg, rgb(1, 55, 96) 0%, 
-    rgb(128, 55, 155) 48%, 
-    rgb(222, 27, 131) 74%, 
-    rgb(246, 77, 5) 100%
-  );
+  background: linear-gradient(110deg, rgb(1, 55, 96) 0%,
+      rgb(128, 55, 155) 48%,
+      rgb(222, 27, 131) 74%,
+      rgb(246, 77, 5) 100%);
 }
 
 body {
@@ -19,20 +23,37 @@ body {
   height: inherit;
 }
 
-main{
+main {
   height: inherit;
 }
 
 
 img {
+  max-height: 100%;
+  max-width: 100%;
   object-fit: cover;
+}
+
+li {
+  list-style: square;
+}
+
+li::marker {
+  color: var(--third-color);
 }
 
 @media screen and (min-width: 1025px) {
   h1 { font-size: 4rem; }
   h2 { font-size: 3em; }
   h3 { font-size: 2em; }
-  p { font-size: 1.5em; }
+  p {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+  li {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
 }
 
 body.bg-white {
@@ -43,25 +64,41 @@ body.bg-white {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  -webkit-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
-  -moz-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
-  box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.4);
 }
 
-#next-page, #prev-page{
+body.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+
+  @media screen and (max-width: 1025px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#next-page,
+#prev-page {
   all: unset;
   position: absolute;
   bottom: 1rem;
   font-size: 4rem;
   opacity: 0;
-  cursor:pointer;
+  cursor: pointer;
 }
-#next-page:hover, #prev-page:hover{ 
+
+#next-page:hover,
+#prev-page:hover {
   opacity: 1;
 }
-#next-page{
+
+#next-page {
   right: 2rem;
 }
+
 #prev-page {
   left: 2rem;
 }
