@@ -45,3 +45,12 @@
     }
   }
 }
+
+html {
+  @media (orientation: portrait) and (max-width: 1025px){
+    background: linear-gradient(110deg, rgb(1, 55, 96) 0%,
+        rgb(128, 55, 155) 48%,
+        rgb(222, 27, 131) 74%,
+        rgb(246, 77, 5) 100%);
+  }
+}
