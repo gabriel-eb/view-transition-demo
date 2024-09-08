@@ -93,8 +93,8 @@ If you want to add an extra to your website, you can use the View Transitions AP
 7. [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API)
 
 ### Live demos
-7. [(MPA) List of Chrome DevRel](https://view-transitions.netlify.app/profiles/mpa/)  
-8. [(MPA) Cross-document view transition example](https://mdn.github.io/dom-examples/view-transitions/mpa/)  
-9. [(SPA) Basic View Transitions API demo](https://mdn.github.io/dom-examples/view-transitions/spa/)  
-10. [(SPA) Cards](https://view-transitions.netlify.app/cards/spa/)
-11. [(SPA) HTTP 203](https://http203-playlist.netlify.app/)
+8. [(MPA) List of Chrome DevRel](https://view-transitions.netlify.app/profiles/mpa/)  
+9. [(MPA) Cross-document view transition example](https://mdn.github.io/dom-examples/view-transitions/mpa/)  
+10. [(SPA) Basic View Transitions API demo](https://mdn.github.io/dom-examples/view-transitions/spa/)  
+11. [(SPA) Cards](https://view-transitions.netlify.app/cards/spa/)
+12. [(SPA) HTTP 203](https://http203-playlist.netlify.app/)
