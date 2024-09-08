@@ -45,6 +45,29 @@ ul > li::marker {
   color: var(--third-color);
 }
 
+footer {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  min-width: 25vw;
+  max-width: 50vw;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  img {
+    max-width: 3em;
+    max-height: 3em;
+  }
+  em {
+    font-size: 1.2em;
+  }
+
+  @media screen and (max-width: 1025px) {
+    bottom: 1px;
+    min-width: 75vw;
+  }
+}
+
 @media screen and (min-width: 1025px) {
   h1 { font-size: 4rem; }
   h2 { font-size: 3em; }
@@ -109,11 +132,18 @@ body.content.inverted {
   }
 }
 
+.inverted footer {
+  min-width: 240px;
+  right: 0;
+  left: unset;
+}
+
+
 #next-page,
 #prev-page {
   all: unset;
   position: absolute;
-  bottom: 1rem;
+  bottom: 2.5rem;
   font-size: 4rem;
   opacity: 0;
   cursor: pointer;
