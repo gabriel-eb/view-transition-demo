@@ -9,9 +9,11 @@ main {
     transform: translateY(-50%);
     display: flex;
     justify-content: space-evenly;
+
     @media screen and (max-width: 1025px) {
         flex-wrap: wrap;
     }
+
     @media screen and (max-width: 600px) {
         max-height: 70vh;
         overflow-y: scroll;
@@ -35,10 +37,59 @@ main {
 .card-description {
     h4 {
         font-size: 1.2em;
-        margin:0;
+        margin: 0;
     }
+
     p {
         font-size: 1em;
-        margin:0;
+        margin: 0;
+    }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes widthAnimation {
+    from { width: 0; height: 100%; }
+    to { width: 100%; height: 100%; }
+}
+
+@keyframes heightAnimation {
+    from { width: 100%; height: 0; }
+    to { width: 100%; height: 100%; }
+}
+
+@keyframes positionAnimation {
+    from { top:0px; left: 0px; }
+    to { top:50px; left: 50px; }
+}
+
+@keyframes transAnimation {
+    from { transform: rotate(0); }
+    to { transform: rotate(180deg); }
+}
+
+.animated {
+    .card:nth-child(1) img {
+        animation: 3s infinite alternate fadein;
+    }
+
+    .card:nth-child(2) img {
+        animation: 3s 0.5s infinite alternate widthAnimation;
+    }
+
+    .card:nth-child(3) img {
+        animation: 3s 0.8s infinite alternate heightAnimation;
+    }
+
+    .card:nth-child(4) img {
+        position: relative;
+        animation: 3s 0.3s infinite alternate positionAnimation;
+    }
+
+    .card:nth-child(5) img {
+        animation: 3s infinite alternate transAnimation;
     }
 }
