@@ -3,7 +3,7 @@
 const homePagePattern = new URLPattern(`/index.html`, window.origin);
 const isHomePage = (url) => homePagePattern.exec(url);
 
-const profilePagePattern = new URLPattern(`/profiles/:profile`, window.origin);
+const profilePagePattern = new URLPattern(`/view-transition-demo/profiles/:profile`, window.origin);
 const isProfilePage = (url) => profilePagePattern.exec(url);
 
 const extractProfileNameFromUrl = (url) => {
