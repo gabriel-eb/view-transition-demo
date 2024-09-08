@@ -1,20 +1,10 @@
 // Path where this app is deployed. Because we don’t deploy at the root of the domain
 // we need to keep track of this and adjust any URL matching using this value.
 const homePagePattern = new URLPattern(`/index.html`, window.origin);
-const isHomePage = (url) => {
-    console.log('home pattern:', homePagePattern.pathname);
-    console.log('home url', url.pathname);
-    console.log('home exec', homePagePattern.exec(url));
-    homePagePattern.exec(url);
-}
+const isHomePage = (url) => homePagePattern.exec(url);
 
 const profilePagePattern = new URLPattern(`/profiles/:profile`, window.origin);
-const isProfilePage = (url) => {
-    console.log('prof pattern:', profilePagePattern.pathname);
-    console.log('prof url:', url.pathname);
-    console.log('prof exec:', profilePagePattern.exec(url));
-    profilePagePattern.exec(url);
-}
+const isProfilePage = (url) => profilePagePattern.exec(url);
 
 const extractProfileNameFromUrl = (url) => {
     const match = profilePagePattern.exec(url);
@@ -40,7 +30,6 @@ window.addEventListener('pageswap', async (e) => {
     if (e.viewTransition) {
         const currentUrl = e.activation.from?.url ? new URL(e.activation.from.url) : null;
         const targetUrl = new URL(e.activation.entry.url);
-        // console.log(isProfilePage(currentUrl) && isHomePage(targetUrl));
 
         // Going from profile page to homepage
         // ~> The big img and title are the ones!
@@ -50,13 +39,11 @@ window.addEventListener('pageswap', async (e) => {
                 [document.querySelector(`#detail main img`), 'animate-avatar'],
             ], e.viewTransition.finished);
         }
-        // console.log(isProfilePage(targetUrl));
 
         // Going to profile page
         // ~> The clicked items are the ones!
         if (isProfilePage(targetUrl)) {
             const profile = extractProfileNameFromUrl(targetUrl).replace(/\.[^/.]+$/, "");
-            // console.log(profile);
 
             setTemporaryViewTransitionNames([
                 [document.querySelector(`#${profile} span`), 'animate-name'],
@@ -76,12 +63,10 @@ window.addEventListener('pagereveal', async (e) => {
         const fromUrl = new URL(navigation.activation.from.url);
         const currentUrl = new URL(navigation.activation.entry.url);
 
-        // console.log(isProfilePage(currentUrl) && isHomePage(targetUrl));
         // Went from profile page to homepage
         // ~> Set VT names on the relevant list item
         if (isProfilePage(fromUrl) && isHomePage(currentUrl)) {
             const profile = extractProfileNameFromUrl(fromUrl).replace(/\.[^/.]+$/, "");
-            // console.log(profile);
 
             setTemporaryViewTransitionNames([
                 [document.querySelector(`#${profile} span`), 'animate-name'],
@@ -89,7 +74,6 @@ window.addEventListener('pagereveal', async (e) => {
             ], e.viewTransition.ready);
         }
 
-        // console.log(isProfilePage(currentUrl));
         // Went to profile page
         // ~> Set VT names on the main title and image
         if (isProfilePage(currentUrl)) {
