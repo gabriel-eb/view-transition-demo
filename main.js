@@ -1,6 +1,6 @@
 // Path where this app is deployed. Because we don’t deploy at the root of the domain
 // we need to keep track of this and adjust any URL matching using this value.
-const homePagePattern = new URLPattern(`/index.html`, window.origin);
+const homePagePattern = new URLPattern(`/view-transition-demo/index.html`, window.origin);
 const isHomePage = (url) => homePagePattern.exec(url);
 
 const profilePagePattern = new URLPattern(`/view-transition-demo/profiles/:profile`, window.origin);
