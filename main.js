@@ -24,7 +24,7 @@ const setTemporaryViewTransitionNames = async (entries, vtPromise) => {
 
 }
 
-// When going to a detail page, set `profile-name` and `profile-avatar` vt-names
+// When going to a detail page, set `animate-name` and `animate-avatar` vt-names
 // on the elements that link to that detail page
 window.addEventListener('pageswap', async (e) => {
     if (e.viewTransition) {
@@ -53,7 +53,7 @@ window.addEventListener('pageswap', async (e) => {
     }
 });
 
-// When going from a detail page to the homepage, set `profile-name` and `profile-avatar` vt-names
+// When going from a detail page to the homepage, set `animate-name` and `animate-avatar` vt-names
 // on the list item for the profile that was viewed on the detail page.
 window.addEventListener('pagereveal', async (e) => {
 
